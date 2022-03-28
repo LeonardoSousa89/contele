@@ -1,0 +1,76 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: Endpoint sem parametros id
+  description: Endpoint sem parametros id
+paths: 
+  /api/v1/users:
+    post:
+      summary: Criar único usuário
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: '#/definitions/body_request'
+      responses:
+        201:
+          description: Usuário criado com sucesso.
+        400:
+          description: Erro ao inserir os dados.
+        500:
+          description: Ocorreu um erro no servidor.
+    delete:
+      summary: deletar todos os usuarios
+      responses:
+        204:
+          description: Dados removidos com Sucesso.
+        401:
+          description: Você precisa estar logado para esta ação.
+        500:
+          description: Ocorreu um erro no servidor.
+    get:
+      summary: Listar todos usuarios
+      responses:
+        200:
+          description: OK.
+          schema:
+            $ref: '#/definitions/body_response'
+        401:
+          description: Você precisa estar logado para esta ação.
+        500:
+          description: Ocorreu um erro no servidor.
+definitions:
+  body_request:
+    type: object
+    required:
+      - email
+      - senha
+    properties:
+      email:
+        type: string
+        example: Thomas@gmail.com
+        format: email
+      senha:
+        type: string
+        example: 1234
+        format: password
+  body_response:
+    type: object
+    required:
+      - id
+      - email
+      - senha
+    properties:
+      id:
+        type: string
+        example: 102456
+        format: email
+      email:
+        type: string
+        example: Thomas@gmail.com
+        format: email
+      senha:
+        type: string
+        example: 1234
+        format: password
