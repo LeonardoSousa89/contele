@@ -16,8 +16,8 @@ paths:
       responses:
         201:
           description: Usuário alterado com sucesso.
-        401:
-          description: Você precisa estar logado para esta ação.
+        404:
+          description: Usuário não encontrado.
         500:
           description: Ocorreu um erro no servidor.
     delete:
@@ -25,8 +25,8 @@ paths:
       responses:
         204:
           description: Dados removidos com Sucesso.
-        401:
-          description: Você precisa estar logado para esta ação.
+        404:
+          description: Usuário não encontrado.
         500:
           description: Ocorreu um erro no servidor.
     get:
@@ -36,8 +36,8 @@ paths:
           description: OK.
           schema:
             $ref: '#/definitions/body_response'
-        401:
-          description: Você precisa estar logado para esta ação.
+        404:
+          description: Usuário não encontrado.
         500:
           description: Ocorreu um erro no servidor.
 definitions:

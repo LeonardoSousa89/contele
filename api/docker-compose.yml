@@ -1,10 +1,33 @@
-version: "3"
-
+version: "3.0"  
 services:
-  app:
+  node:
+    container_name: "testecontele"
     build: .
-    command: npm start
-    ports:
-      - 8081:8081
+    environment:
+      - NODE_ENV=production
     volumes:
-      - .:/usr/contele 
+      - .:/usr/contele
+    depends_on:
+      - postgresqls
+    ports:
+      - "8081:8081"
+    networks:
+      - default  
+    command: "npm start"
+  postgresqls:
+    container_name: "postgresqlpostgis"
+    image: "postgis/postgis"
+    ports: 
+      - "5433:5432"
+    volumes:
+       - db_persdata:/var/lib/postgrespers
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: testecontele
+    networks:
+      - default
+networks:
+  default:
+volumes:
+  db_persdata : {}
