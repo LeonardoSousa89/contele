@@ -1,5 +1,4 @@
 const _Port     = 8081
-const Host      = '0.0.0.0'
 
 const server    = require('./api/index')
 const cors      = require('cors')
@@ -18,5 +17,5 @@ app.use(cors({origin:'*',
 
 app.use('/', server)
 
-app.listen(_Port, Host)
+app.listen(_Port)
 
