@@ -1,12 +1,13 @@
-FROM node:alpine  
+FROM node:14  
 
-WORKDIR /usr/contele
+WORKDIR /src
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
 
 EXPOSE 8081
 
-CMD  ["npm" ,"start"]
+CMD  ["node" ,"index.js"]
