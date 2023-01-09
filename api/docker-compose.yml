@@ -1,24 +1,23 @@
 version: "3.0"  
 services:
-  node:
+  app:
     container_name: "testecontele"
+    image: leozin89/contele
     build: .
     environment:
       - NODE_ENV=production
-    volumes:
-      - .:/usr/contele
     depends_on:
-      - postgresqls
+      - postgresql
     ports:
       - "8081:8081"
     networks:
       - default  
     command: "npm start"
-  postgresqls:
-    container_name: "postgresqlpostgis"
-    image: "postgis/postgis"
+  postgresql:
+    container_name: "postgresqlpostgres"
+    image: "postgres"
     ports: 
-      - "5433:5432"
+      - "5432:5432"
     volumes:
        - db_persdata:/var/lib/postgrespers
     environment:
